@@ -31,7 +31,7 @@ export default function LoginScreen({navigation}) {
             .then((res) => {
                 console.log(res)
                 console.log('User logged-in successfully!')
-                navigation.navigate({name: 'ReaderBarcode'})
+                
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -40,7 +40,7 @@ export default function LoginScreen({navigation}) {
                 console.log(errorMessage);
                 // ..
             });
-        //navigation.navigate({name: 'StartScreen'})
+       
     }
     
     

@@ -37,7 +37,7 @@ export default function RegisterScreen({navigation}) {
                 // Signed in
                 const user = userCredential.user;
                 console.log(user);
-                navigation.navigate({name: 'Dashboard'})
+                
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -46,7 +46,7 @@ export default function RegisterScreen({navigation}) {
                 console.log(errorMessage);
                 // ..
             });
-        navigation.navigate({name: 'StartScreen'})
+        
     }
 
 

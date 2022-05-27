@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button,Alert, ToastAndroid } from 'react-native';
+import { Text, View, StyleSheet,Platform, Button,Alert, ToastAndroid,} from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import BackButton from '../components/BackButton';
 import Background from '../components/Background';
@@ -49,10 +49,12 @@ export default function ReaderBarcode({navigation}) {
         
         let message = "Aucune reponse";
         
+        
         if (response != null) { 
           switch(response.status) {
           case 200:
             message = "Authorized";
+            
             break;
           case 403:
             message = "SCANNED A LOT";
@@ -60,22 +62,25 @@ export default function ReaderBarcode({navigation}) {
           
           case 404:
             message = "NOT FOUND";
+        
             break;
      
           case 400:
             message = "MISSED ARGUMENT";
+            backgroundColor="#000000"
             break;
           default:
               message = "not interpreted : "+ response.status;
               break;
           }
         }
-        alert('Code : '+ data+' - Response : ' + message);
-       // ToastAndroid.showWithGravity('Code : '+ data+ "\n"+'Response : ' + message ,
-        // ToastAndroid.LONG,
-        // ToastAndroid.CENTER,
-         
-        //)
+        //alert('Code : '+ data+' - Response : ' + message);
+        
+      ToastAndroid.showWithGravity('Code : '+ data+ "\n"+'Response : ' + message , 
+        ToastAndroid.LONG,
+         ToastAndroid.CENTER,
+        )
+      console.log(data);
       } catch (error) {
         console.error(error);
       }
